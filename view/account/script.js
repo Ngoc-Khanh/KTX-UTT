@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hàm để lấy dữ liệu sinh viên từ API và hiển thị trên bảng
     function fetchAccounts() {
-        fetch('http://localhost/mvc-test/api/account/read.php')
+        fetch('../../api/account/read.php')
             .then(response => response.json())
             .then(data => {
                 if (data.message === 'No records found') {
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Nếu đang trong quá trình sửa, hiển thị thông tin tài khoản lên các input
             if (isEditing) {
-                fetch(`http://localhost/mvc-test/api/account/show.php?id_account=${selectedAccountId}`)
+                fetch(`../../api/account/show.php?id_account=${selectedAccountId}`)
                     .then(response => response.json())
                     .then(account => {
                         userInput.value = account.user_account;
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (confirm('Bạn có chắc chắn muốn sửa tài khoản này không?')) {
                 // Đã xác nhận sửa, tiếp tục thực hiện các thao tác cần thiết
                 // Lấy thông tin của tài khoản từ API và hiển thị lên các ô input
-                fetch(`http://localhost/mvc-test/api/account/show.php?id_account=${selectedAccountId}`)
+                fetch(`../../api/account/show.php?id_account=${selectedAccountId}`)
                     .then(response => response.json())
                     .then(account => {
                         userInput.value = account.user_account;
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
 
                 // Thực hiện yêu cầu API để thêm tài khoản mới
-                fetch('http://localhost/mvc-test/api/account/create.php', {
+                fetch('../../api/account/create.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     type_account: typeInput.value,
                 };
 
-                fetch('http://localhost/mvc-test/api/account/update.php', {
+                fetch('../../api/account/update.php', {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hàm để xóa tài khoản
     function deleteAccount(accountId) {
-        fetch(`http://localhost/mvc-test/api/account/delete.php?id_account=${accountId}`, {
+        fetch(`../../api/account/delete.php?id_account=${accountId}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hàm để tìm kiếm tài khoản theo từ khóa
     function searchAccounts(keyword) {
-        fetch(`http://localhost/mvc-test/api/account/search.php?keyword=${keyword}`)
+        fetch(`../../api/account/search.php?keyword=${keyword}`)
             .then(response => response.json())
             .then(data => {
                 if (data.message) {

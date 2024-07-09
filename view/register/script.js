@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append("confirm-password", confirmPassword);
 
         // Gửi dữ liệu đăng ký lên server sử dụng fetch
-        fetch("http://localhost/mvc-test/api/register/register.php", {
+        fetch("../../api/register/register.php", {
             method: "POST",
             body: formData
         })

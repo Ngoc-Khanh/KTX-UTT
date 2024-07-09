@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function fetchHoadonByMaPhong(MaPhong) {
-        fetch(`http://localhost/mvc-test/api/bill/readbymaphong.php?MaPhong=${MaPhong}`)
+        fetch(`../../api/bill/readbymaphong.php?MaPhong=${MaPhong}`)
             .then(response => response.json())
             .then(data => {
                 if (data.message === 'No records found') {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
             button.addEventListener('click', function() {
                 const hoadonId = button.getAttribute('data-hoadon-id');
                 if (hoadonId) {
-                    fetch(`http://localhost/mvc-test/api/bill/deletehoadon.php?MaHD=${hoadonId}`, {
+                    fetch(`../../api/bill/deletehoadon.php?MaHD=${hoadonId}`, {
                         method: 'DELETE'
                     })
                     .then(response => response.json())
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const hoadonId = button.getAttribute('data-hoadon-id');
                 const newStatus = button.textContent === 'Chưa thu' ? 'Đã thu' : 'Chưa thu';
                 
-                fetch(`http://localhost/mvc-test/api/bill/updatestatus.php?MaHD=${hoadonId}&TinhTrang=${newStatus}`, {
+                fetch(`../../api/bill/updatestatus.php?MaHD=${hoadonId}&TinhTrang=${newStatus}`, {
                     method: 'PUT'
                 })
                 .then(response => response.json())
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
             TinhTrang
         };
     
-        fetch('http://localhost/mvc-test/api/bill/createhoadon.php', {
+        fetch('../../api/bill/createhoadon.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

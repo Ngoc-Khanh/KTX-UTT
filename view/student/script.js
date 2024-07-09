@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchStudents();
     // Hàm để lấy dữ liệu sinh viên từ API và hiển thị trên bảng
     function fetchStudents() {
-        fetch('http://localhost/mvc-test/api/student/read.php')
+        fetch('../../api/student/read.php')
             .then(response => response.json())
             .then(data => {
                 if (data.message === 'No records found') {
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectedStudentMaSV = selectedRow.getAttribute('data-student-MaSV');
 
             // Lấy thông tin của sinh viên từ API và hiển thị lên các ô input
-            fetch(`http://localhost/mvc-test/api/student/show.php?MaSV=${selectedStudentMaSV}`)
+            fetch(`../../api/student/show.php?MaSV=${selectedStudentMaSV}`)
                 .then(response => response.json())
                 .then(student => {
                     MaSVInput.value = student.MaSV;
@@ -131,13 +131,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Kiểm tra xem mã sinh viên có trùng không
-            fetch(`http://localhost/mvc-test/api/student/show.php?MaSV=${newStudent.MaSV}`)
+            fetch(`../../api/student/show.php?MaSV=${newStudent.MaSV}`)
                 .then(response => response.json())
                 .then(exitstingStudent => {
                     if (exitstingStudent && exitstingStudent.MaSV === newStudent.MaSV) {
                         alert('Mã sinh viên đã tồn tại. Vui lòng chọn mã sinh viên khác.');
                     } else {
-                        fetch('http://localhost/mvc-test/api/student/create.php', {
+                        fetch('../../api/student/create.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('Data sent to server:', student);
 
         // Gửi yêu cầu cập nhật sinh viên đến API
-        fetch('http://localhost/mvc-test/api/student/update.php', {
+        fetch('../../api/student/update.php', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (selectedStudentMaSV) {
             var confirmation = confirm("Bạn có chắc chắn muốn xóa không?");
             if (confirmation) {
-                fetch(`http://localhost/mvc-test/api/student/delete.php?MaSV=${selectedStudentMaSV}`, {
+                fetch(`../../api/student/delete.php?MaSV=${selectedStudentMaSV}`, {
                     method: 'DELETE'
                 })
                     .then(response => {
@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hàm để tìm kiếm sinh viên theo MaSV và hiển thị kết quả trên bảng
     function searchStudent(keyword) {
         // Gọi API để lấy thông tin sinh viên theo MaSV
-        fetch(`http://localhost/mvc-test/api/student/search.php?keyword=${keyword}`)
+        fetch(`../../api/student/search.php?keyword=${keyword}`)
             .then(response => response.json())
             .then(data => {
                 // Hiển thị kết quả trên bảng

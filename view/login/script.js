@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const formData = new FormData(loginForm);
 
-        fetch('http://localhost/mvc-test/api/login/login.php', {
+        fetch('../../api/login/login.php', {
             method: 'POST',
             body: formData
         })

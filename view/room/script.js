@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hàm để lấy dữ liệu sinh viên từ API và hiển thị trên bảng
     function fetchPhongs() {
-        fetch('http://localhost/mvc-test/api/room/read.php')
+        fetch('../../api/room/read.php')
             .then(response => response.json())
             .then(data => {
                 if (data.message === 'No records found') {
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hàm để cập nhật số người hiện tại trong mỗi phòng từ cơ sở dữ liệu
 function fetchCurrentStudentsCount() {
-    fetch('http://localhost/mvc-test/api/room/songuoihientai.php')
+    fetch('../../api/room/songuoihientai.php')
         .then(response => response.json())
         .then(data => {
             data.forEach(item => {
@@ -89,7 +89,7 @@ function fetchCurrentStudentsCount() {
 // Hàm để cập nhật số người hiện tại trong cơ sở dữ liệu
 function updateCurrentStudentsCountInDatabase() {
     // Gửi yêu cầu để lấy danh sách tất cả các mã phòng từ cơ sở dữ liệu
-    fetch('http://localhost/mvc-test/api/room/all_rooms.php')
+    fetch('../../api/room/all_rooms.php')
         .then(response => response.json())
         .then(data => {
             // Duyệt qua danh sách các mã phòng
@@ -98,7 +98,7 @@ function updateCurrentStudentsCountInDatabase() {
                 const SoSinhVien = room.SoSinhVien;
 
                 // Gửi yêu cầu cập nhật số người hiện tại cho từng mã phòng
-                fetch(`http://localhost/mvc-test/api/room/update_songuoihientai.php?MaPhong=${MaPhong}&SoNguoiHienTai=${SoSinhVien}`, {
+                fetch(`../../api/room/update_songuoihientai.php?MaPhong=${MaPhong}&SoNguoiHienTai=${SoSinhVien}`, {
                     method: 'PUT'
                 })
                 .then(response => {
@@ -133,7 +133,7 @@ function updateCurrentStudentsCountInDatabase() {
             selectedPhongId = selectedRow.getAttribute('data-phong-id');
 
             // Lấy thông tin của sinh viên từ API và hiển thị lên các ô input
-            fetch(`http://localhost/mvc-test/api/room/show.php?MaPhong=${selectedPhongId}`)
+            fetch(`../../api/room/show.php?MaPhong=${selectedPhongId}`)
                 .then(response => response.json())
                 .then(phong => {
                     MaPhongInput.value = phong.MaPhong;
@@ -170,7 +170,7 @@ function updateCurrentStudentsCountInDatabase() {
             };
     
             // Kiểm tra xem Mã phòng đã tồn tại chưa bằng cách gửi yêu cầu GET đến API
-            fetch(`http://localhost/mvc-test/api/room/show.php?MaPhong=${newPhong.MaPhong}`)
+            fetch(`../../api/room/show.php?MaPhong=${newPhong.MaPhong}`)
                 .then(response => response.json())
                 .then(existingPhong => {
                     if (existingPhong && existingPhong.MaPhong === newPhong.MaPhong) {
@@ -178,7 +178,7 @@ function updateCurrentStudentsCountInDatabase() {
                         alert("Mã phòng đã tồn tại. Vui lòng nhập Mã phòng khác!");
                     } else {
                         // Nếu Mã phòng chưa tồn tại, thêm mới
-                        fetch('http://localhost/mvc-test/api/room/create.php', {
+                        fetch('../../api/room/create.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -225,7 +225,7 @@ function updateCurrentStudentsCountInDatabase() {
             Gia: GiaInput.value
         };
 
-        fetch('http://localhost/mvc-test/api/room/update.php', {
+        fetch('../../api/room/update.php', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -252,7 +252,7 @@ function updateCurrentStudentsCountInDatabase() {
     // deleteButton.addEventListener('click', function() {
     //     if (selectedPhongId) {
 
-    //         fetch(`http://localhost/mvc-test/api/room/delete.php?MaPhong=${selectedPhongId}`, {
+    //         fetch(`../../api/room/delete.php?MaPhong=${selectedPhongId}`, {
     //             method: 'DELETE'
     //         })
     //         .then(response => response.json())
@@ -271,7 +271,7 @@ function updateCurrentStudentsCountInDatabase() {
 
             if (confirmation) {
                 // Nếu người dùng chọn "Có"
-                fetch(`http://localhost/mvc-test/api/room/delete.php?MaPhong=${selectedPhongId}`, {
+                fetch(`../../api/room/delete.php?MaPhong=${selectedPhongId}`, {
                     method: 'DELETE'
                 })
                     .then(response => {
@@ -345,7 +345,7 @@ function updateCurrentStudentsCountInDatabase() {
     // Hàm để tìm kiếm sinh viên theo ID và hiển thị kết quả trên bảng
     function searchPhong(MaPhong) {
         // Gọi API để lấy thông tin sinh viên theo ID
-        fetch(`http://localhost/mvc-test/api/room/search.php?MaPhong=${MaPhong}`)
+        fetch(`../../api/room/search.php?MaPhong=${MaPhong}`)
             .then(response => response.json())
             .then(data => {
                 // Hiển thị kết quả trên bảng

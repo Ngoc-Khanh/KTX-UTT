@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Hàm để lấy dữ liệu phòng từ API và hiển thị trên bảng
     function fetchPhong() {
-        fetch('http://localhost/mvc-test/api/bill/read.php')
+        fetch('../../api/bill/read.php')
             .then(response => response.json())
             .then(data => {
                 if (data.message === 'No records found') {
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Hàm để tìm kiếm phòng theo mã phòng và hiển thị kết quả trên bảng
     function searchPhong(MaPhong) {
         // Gọi API để lấy thông tin phòng theo mã phòng
-        fetch(`http://localhost/mvc-test/api/bill/search.php?MaPhong=${MaPhong}`)
+        fetch(`../../api/bill/search.php?MaPhong=${MaPhong}`)
             .then(response => response.json())
             .then(data => {
                 // Hiển thị kết quả trên bảng
