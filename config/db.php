@@ -1,7 +1,7 @@
 <?php
 class db
 {
-    protected $servername = "localhost";
+    protected $servername = "192.168.11.128";
     protected $username = "root";
     protected $password = "";
     protected $db = "api_resful_kytucxa";
