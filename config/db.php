@@ -1,7 +1,7 @@
 <?php
 class db
 {
-    protected $servername = "localhost";
+    protected $servername = "ktxutt.com";
     protected $username = "user1";
     protected $password = "";
     protected $db = "api_resful_kytucxa";
