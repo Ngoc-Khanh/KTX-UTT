@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost"; // Tên máy chủ MySQL, mặc định là localhost nếu MySQL đang chạy trên cùng máy
-$username = "root"; // Tên người dùng MySQL
+$username = "user1"; // Tên người dùng MySQL
 $password = ""; // Mật khẩu MySQL
 $database = "api_resful_kytucxa"; // Tên cơ sở dữ liệu MySQL bạn muốn kết nối đến
 
