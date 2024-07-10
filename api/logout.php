@@ -23,5 +23,5 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Chuyển hướng người dùng đến trang đăng nhập hoặc trang chính sau khi đăng xuất
-header("Location: ../view/login/index.html");
+header("Location: ../index.html");
 exit;
